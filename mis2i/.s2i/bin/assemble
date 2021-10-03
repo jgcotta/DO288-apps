@@ -1,0 +1,21 @@
+#!/bin/bash
+echo "Before assembling"
+
+
+/usr/libexec/s2i/assemble
+rc=$?
+
+echo "------>customizando mi imagen S2I Builder"
+
+cp -Rf /tmp/src/*.html ./
+
+echo "termine"
+
+
+if [ $rc -eq 0 ]; then
+    echo "After successful assembling"
+else
+    echo "After failed assembling"
+fi
+
+exit $rc
